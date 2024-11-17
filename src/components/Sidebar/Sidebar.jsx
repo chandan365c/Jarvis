@@ -2,12 +2,19 @@ import React, { useContext, useState } from "react";
 import './Sidebar.css'
 import {assets} from '../../assets/assets'
 import { Context } from "../../context/Context";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () =>
 {
 
     const[extended, setExtended] = useState(false)
     const {onSent, prevPrompt, setRecentPrompt, newChat} = useContext(Context)
+    const navigate = useNavigate();
+
+    //Navigate to UserProfile route
+    const handleAccountClick = () => {
+        navigate('/user-profile');  
+    };
 
     //Load the previous questions (We're just storing the questions and regenerating the response upon click)
     const loadPrompt = async (prompt) =>
@@ -42,7 +49,7 @@ const Sidebar = () =>
                 :null}
             </div>
             <div className="bottom">
-                <div className="bottom-item recent-entry">
+                <div className="bottom-item recent-entry" onClick={handleAccountClick}>
                     <img src={assets.user_icon} alt="" />
                     {extended ? <p>Account</p> : null}
                 </div>

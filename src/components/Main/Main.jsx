@@ -1,16 +1,33 @@
 import React, { useContext } from "react";
-import './Main.css'
+import './Main.css';
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
+import { auth } from '../../firebase.js'; // Adjust the path as necessary
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Main = () =>
 {
+
+    const navigate = useNavigate(); // Use navigate to redirect after logout
+    
+    const handleLogout = async () => {
+        try {
+            await signOut(auth); // Sign out from Firebase
+            navigate('/'); // Redirect to the login page after logout
+        } catch (error) {
+            console.error('Logout error:', error); // Handle error as needed
+        }
+    };
+    
+
     const{onSent, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context)
 
     return (
         <div className="main">
             <div className="nav">
                 <p>NanoBot</p>
+                <button className="logout" onClick={handleLogout}>LOGOUT</button>
             </div>
             <div className="main-container">
 

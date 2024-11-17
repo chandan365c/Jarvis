@@ -1,0 +1,119 @@
+body 
+{
+    background-color: #121212; /* Dark background for the whole page */
+    color: #ffffff; /* Default white text color for contrast */
+    font-family: 'Arial', sans-serif; /* Font family */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.user-profile {
+    max-width: 600px; /* Center the content */
+    width: 100%;
+    margin: 40px auto; /* Center with top/bottom margin */
+    padding: 20px;
+    background-color: #1e1e1e; /* Darker gray background for the profile card */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.user-profile:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7); /* Deeper shadow on hover */
+}
+
+.user-profile h1 {
+    text-align: center; /* Center the heading */
+    font-size: 2em; /* Increase font size for heading */
+    margin-bottom: 20px; /* Space below heading */
+}
+
+.profile-picture {
+    display: flex;
+    justify-content: center; /* Center the profile picture */
+    margin-bottom: 20px;
+    
+}
+
+.profile-picture img {
+    border-radius: 50%; /* Circular profile picture */
+    width: 150px; /* Fixed width for profile picture */
+    height: 150px; /* Fixed height for profile picture */
+    border: 3px solid #00bfff; /* Blue border around profile picture */
+}
+
+.profile-details {
+    text-align: center;
+    margin: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.profile-details label {
+    gap: 10px;
+    display: block; /* Block display for labels */
+    margin-bottom: 10px; /* Space between labels */
+    font-weight: bold; /* Bold labels for emphasis */
+}
+
+.profile-details span {
+    margin-left: 10px;
+    font-family: monospace;
+    font-size: large;
+}
+
+.profile-details input {
+    width: calc(100% - 10px); /* Full width minus padding */
+    padding: 10px; /* Increased padding inside input */
+    border-radius: 5px; /* Rounded corners for inputs */
+    border: none; /* No border for inputs */
+    background-color: #333333; /* Dark background for inputs */
+    color: #ffffff; /* White text color inside inputs */
+    transition: background-color 0.3s ease; /* Smooth transition for background color on focus */
+}
+
+.profile-details input::placeholder {
+    color: #aaaaaa; /* Light gray placeholder text */
+}
+
+.profile-details input:hover,
+.profile-details input:focus {
+    background-color: #444444; /* Slightly lighter gray on hover/focus */
+}
+
+.save-edit {
+    width: 100%; /* Full width button */
+    padding: 10px;
+    background-color: #007BFF; /* Bootstrap primary color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1em; /* Increase font size for button text */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+}
+
+.save-edit:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.back-button {
+    background-color: #4892e1;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding-left: 8px;
+    padding-right: 8px; 
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 23px;
+    text-align: center;
+    aspect-ratio: 1 / 1; /* Ensures equal width and height for a perfect circle */
+    transition: all 0.4s ease;
+}
+
+.back-button:hover {
+    scale: 1.2;
+}
