@@ -1,13 +1,10 @@
-// Login.js
 import React, { useState } from 'react';
-import { auth, googleProvider } from './firebase.js';
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
-import google_logo from './assets/Google.png';
 import ParticleEffect from './components/Particle.jsx';
 import password_icon from './assets/lock-stroke-rounded.svg';
 import email_icon from './assets/mail-stroke-rounded.svg';
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,24 +12,25 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate('/page2'); // Redirect to the home page
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const handleGoogleSignIn = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-      navigate('/home'); // Redirect to the home page
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+  const handleLOGIN = (e) =>
+  {
+    e.preventDefault()
+    axios.post('http://localhost:3001/login', {email, password})
+    .then(result => 
+      {
+        console.log(result)
+        if(result.data === "Successfully logged in")
+        {
+          navigate('/page2')
+        }
+        else
+        {
+          setError(result);
+        }
+      }
+    )
+    .catch(err => console.log(err))
+  }
 
   return (
     <div className='login-main'>
@@ -40,7 +38,7 @@ const Login = () => {
       <div className="login-container-wrapper">
         <div className='login-container'>
           <h1>Login</h1>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleLOGIN}>
             <input
               type="email"
               placeholder="Email"
@@ -62,17 +60,13 @@ const Login = () => {
             </p>
             {error && (
               <p style={{ color: 'red', fontSize: '14px' }}>
-                {error === 'Firebase: Error (auth/user-not-found).'
+                {error === 'User does not exist!'
                   ? 'User  not found. Please check your email and password.'
                   : 'Invalid email or password. Please try again.'}
               </p>
             )}
             <button className='login-button' type="submit">Login</button>
           </form>
-          <button className="google-button" onClick={handleGoogleSignIn}>
-            <img className="google-logo" src={google_logo} alt="Google Logo" />
-            Login with Google
-          </button>
         </div>
       </div>
     </div>

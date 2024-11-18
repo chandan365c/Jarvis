@@ -1,43 +1,39 @@
-// Signup.js
 import React, { useState } from 'react';
-import { auth, googleProvider } from './firebase.js'; // Adjust the path as necessary
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './signup.css';
-import google_logo from './assets/Google.png'
 import ParticleEffect from './components/Particle.jsx';
 import password_icon from './assets/lock-stroke-rounded.svg';
 import email_icon from './assets/mail-stroke-rounded.svg';
+import axios from 'axios'
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const handleSignup = async (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/home'); // Redirect to the home page after successful signup
-    } catch (error) {
-      setError(error.message);
-    }
-  };
 
-  const handleGoogleSignup = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-      navigate('/home'); // Redirect to the home page after successful signup
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+  const handleSubmit = (e) =>
+  {
+    e.preventDefault()
+    axios.post('http://localhost:3001/register', {email, password})
+    .then(result => 
+      {
+        console.log(result)
+        if (password !== confirmPassword) 
+        {
+          setError('Passwords donot match!');
+          return;
+        }
+        else
+        {
+          navigate('/home')
+        }
+      }
+    )
+    .catch(err => console.log(err))
+  }
 
   return (
     <div className='signup-main'>
@@ -45,11 +41,11 @@ const Signup = () => {
       <div className="signup-container-wrapper">
         <div className="signup-container">
           <h1>Signup</h1>
-          {error && <p>{error}</p>}
-          <form onSubmit={handleSignup}>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               placeholder="Email"
+              pattern='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -76,11 +72,10 @@ const Signup = () => {
               Already have an account? <a href="/login">Login here</a>
             </p>
 
+            {error && <p className='error-message'>{error}</p>}
+
             <button className='signup-button' type="submit">Signup</button>
           </form>
-          <button className="google-button" onClick={handleGoogleSignup}>
-            <img className="google-logo" src={google_logo} alt="Google Logo" />
-            Signup with Google</button>
         </div>
       </div>
     </div>

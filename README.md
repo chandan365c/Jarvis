@@ -1,20 +1,3 @@
-# Chatbot with LLM APIs
-This project is a chatbot that utilizes Large Language Model (LLM) APIs to interact with users. It allows users to send messages and receive intelligent responses based on the capabilities of the language model. The chatbot can handle various tasks, such as answering questions, providing recommendations, etc.
-
-## Features
-- **Interactive Chat:** Users can type and send messages, and the chatbot responds accordingly.
-- **User Authentication:** Users can sign in and register to start a chat session.
-- **Recent Chats:** Users can see a list of their previous interactions and continue chatting based on past prompts.
-- **Profile Management:** Users can update their profile information.
-
-## Technologies Used
-- **Frontend:** React.js
-- **Routing:** React Router for page navigation
-- **State Management:** React's useState and useContext for managing app state
-- **API:** Google Gemini
-- **Backend:** MongoDB
-- **CSS:** Styled components and external CSS for UI components
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -61,3 +44,27 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

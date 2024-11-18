@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './UserProfile.css'; // Importing the CSS file for styling
-import {assets} from './assets/assets'
+import { assets } from './assets/assets'
 
 const UserProfile = () => {
     // Sample user data (In a real application, this would come from an API or context)

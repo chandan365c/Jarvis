@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import './Main.css';
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
-import { auth } from '../../firebase.js'; // Adjust the path as necessary
-import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const Main = () =>
@@ -13,7 +11,6 @@ const Main = () =>
     
     const handleLogout = async () => {
         try {
-            await signOut(auth); // Sign out from Firebase
             navigate('/'); // Redirect to the login page after logout
         } catch (error) {
             console.error('Logout error:', error); // Handle error as needed

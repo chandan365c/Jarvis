@@ -22,7 +22,7 @@
 .login-container {
   padding: 10px 20px;
   width: 350px;
-  height: 400px;
+  height: 370px;
   border-radius: 10px;
   backdrop-filter: blur(10px);
   background-size: cover;
@@ -122,31 +122,4 @@
 .login-container .login-button:hover {
   background-color: hsl(216, 83%, 52%, 0.9);
   scale: 1.04;
-}
-
-.login-container .google-button {
-  background-color: #fff;
-  border: none;
-  width: 310px;
-  height: 40px;
-  font-weight: bold;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 80px;
-  align-items: center;
-  transition: all 0.4s ease;
-}
-
-.login-container .google-button:hover {
-  background-color: #f0f0f0;
-  scale: 1.04;
-}
-
-.login-container .google-logo {
-  width: 20px;
-  height: 20px;
 }
