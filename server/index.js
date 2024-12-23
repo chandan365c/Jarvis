@@ -14,7 +14,7 @@ app.post("/login", (req, res) =>
         const {email, password} = req.body;
         UserModel.findOne({email: email})
         .then(user => 
-            {
+            { 
                 if(user)
                 {
                     if(user.password === password)
@@ -37,14 +37,27 @@ app.post("/login", (req, res) =>
 
 app.post('/register', (req, res) =>
     {
-        UserModel.create(req.body)
-        .then(Credentials => res.json(Credentials))
-        .catch(err => res.json(err))
+        const {email} = req.body;
+        UserModel.findOne({email: email})
+        .then(user =>
+            {
+                if(user)
+                {
+                    res.json("User with this email already exists!")
+                }
+                else
+                {
+                    UserModel.create(req.body)
+                    .then(Credentials => res.json(Credentials))
+                    .catch(err => res.json(err))
+                }
+            }
+        )
     }
 )
 
 app.listen(3001, () =>
     {
-        console.log("Server is running")
+        console.log("Server is running on port 3001.")
     }
 )

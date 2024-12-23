@@ -28,7 +28,14 @@ const Signup = () => {
       .then(result => 
         {
           console.log(result)
-          navigate('/home')
+          if(result.data === "User with this email already exists!")
+          {
+            setError('Email already in use!');
+          }
+          else
+          {
+            navigate('/page2');
+          }
         }
       )
       .catch(err => console.log(err))

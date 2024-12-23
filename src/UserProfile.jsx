@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './UserProfile.css'; // Importing the CSS file for styling
+import './UserProfile.css'; 
 import { assets } from './assets/assets'
+import ParticleEffect from './components/Particle';
 
 const UserProfile = () => {
     // Sample user data (In a real application, this would come from an API or context)
@@ -26,60 +27,65 @@ const UserProfile = () => {
     };
 
     return (
-        <div className="user-profile">
-            <button className="back-button" onClick={() => window.history.back()}>
-                {'<'}<i className="fas fa-arrow-left"></i>
-            </button>
-            <h1>User Profile</h1>
-            <div className="profile-picture">
-                <img src={assets.user_icon} alt="Profile" />
+        <div className='profile-main'>
+            <ParticleEffect className="particle" />
+            <div className="profile-container-wrapper">
+                <div className="user-profile">
+                    <button className="back-button" onClick={() => window.history.back()}>
+                        {'<'}<i className="fas fa-arrow-left"></i>
+                    </button>
+                    <h1>User Profile</h1>
+                    <div className="profile-picture">
+                        <img src={assets.user_icon} alt="Profile" />
+                    </div>
+                    <div className="profile-details">
+                        <label>
+                            Name: 
+                            {isEditing ? (
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={user.name}
+                                    onChange={handleChange}
+                                />
+                            ) : (
+                                <span>{user.name}</span>
+                            )}
+                        </label>
+                        <label>
+                            Email: 
+                            {isEditing ? (
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={user.email}
+                                    onChange={handleChange}
+                                />
+                            ) : (
+                                <span>{user.email}</span>
+                            )}
+                        </label>
+                        <label>
+                            Phone: 
+                            {isEditing ? (
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    value={user.phone}
+                                    onChange={handleChange}
+                                />
+                            ) : (
+                                <span>{user.phone}</span>
+                            )}
+                        </label>
+                    </div>
+                    <button className='save-edit' onClick={toggleEdit}>
+                        {isEditing ? 'Save Changes' : 'Edit Profile'}
+                    </button>
+                </div>
             </div>
-            <div className="profile-details">
-                <label>
-                    Name: 
-                    {isEditing ? (
-                        <input
-                            type="text"
-                            name="name"
-                            value={user.name}
-                            onChange={handleChange}
-                        />
-                    ) : (
-                        <span>{user.name}</span>
-                    )}
-                </label>
-                <label>
-                    Email: 
-                    {isEditing ? (
-                        <input
-                            type="email"
-                            name="email"
-                            value={user.email}
-                            onChange={handleChange}
-                        />
-                    ) : (
-                        <span>{user.email}</span>
-                    )}
-                </label>
-                <label>
-                    Phone: 
-                    {isEditing ? (
-                        <input
-                            type="tel"
-                            name="phone"
-                            value={user.phone}
-                            onChange={handleChange}
-                        />
-                    ) : (
-                        <span>{user.phone}</span>
-                    )}
-                </label>
-            </div>
-            <button className='save-edit' onClick={toggleEdit}>
-                {isEditing ? 'Save Changes' : 'Edit Profile'}
-            </button>
         </div>
     );
 };
 
-export default UserProfile; // Ensure this line is present
+export default UserProfile; 
