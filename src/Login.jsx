@@ -5,12 +5,14 @@ import ParticleEffect from './components/Particle.jsx';
 import password_icon from './assets/lock-stroke-rounded.svg';
 import email_icon from './assets/mail-stroke-rounded.svg';
 import axios from 'axios';
+import { useUser } from './UserContext.jsx';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { setUser } = useUser();
 
   const handleLOGIN = (e) =>
   {
@@ -21,7 +23,8 @@ const Login = () => {
         console.log(result)
         if(result.data === "Successfully logged in")
         {
-          navigate('/page2')
+          setUser({email});
+          navigate('/page2');
         }
         else
         {

@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './UserProfile.css'; 
 import { assets } from './assets/assets'
-import ParticleEffect from './components/Particle';
+import { useNavigate } from 'react-router-dom';
+import ParticleEffect from './components/Particle.jsx';
+import axios from 'axios';
+import { useUser } from './UserContext.jsx';
 
 const UserProfile = () => {
+
+    const { user } = useUser();
+
     // Sample user data (In a real application, this would come from an API or context)
-    const [user, setUser] = useState({
-        name: 'User1',
-        email: 'User1@example.com',
-        phone: '9876543210',
+    const [profile, setProfile] = useState({
+        username: '',
+        email: '',
+        phone: '',
         profilePicture: './profilePic/default-profile-pic.png', // Placeholder image
     });
 
@@ -18,7 +24,7 @@ const UserProfile = () => {
     // Handle input change
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUser({ ...user, [name]: value });
+        setProfile({ ...user, [name]: value });
     };
 
     // Toggle edit mode
@@ -26,12 +32,34 @@ const UserProfile = () => {
         setIsEditing(!isEditing);
     };
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(user?.email)
+        {
+            axios.get('http://localhost:3001/getUser', { params: {email: user.email}})
+            .then((response) => {
+                if(response.data != "User not found!")
+                {
+                    setProfile(response.data);
+                }
+                else
+                {
+                    console.error("User not found!");
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching user data: ", err);
+            });
+        }
+    }, [user, navigate]);
+
     return (
         <div className='profile-main'>
             <ParticleEffect className="particle" />
             <div className="profile-container-wrapper">
                 <div className="user-profile">
-                    <button className="back-button" onClick={() => window.history.back()}>
+                    <button className="back-button" onClick={() => navigate('/Page2')}>
                         {'<'}<i className="fas fa-arrow-left"></i>
                     </button>
                     <h1>User Profile</h1>
@@ -44,12 +72,12 @@ const UserProfile = () => {
                             {isEditing ? (
                                 <input
                                     type="text"
-                                    name="name"
-                                    value={user.name}
+                                    name="username"
+                                    value={profile.username}
                                     onChange={handleChange}
                                 />
                             ) : (
-                                <span>{user.name}</span>
+                                <span>{profile.username}</span>
                             )}
                         </label>
                         <label>
@@ -58,11 +86,11 @@ const UserProfile = () => {
                                 <input
                                     type="email"
                                     name="email"
-                                    value={user.email}
+                                    value={profile.email}
                                     onChange={handleChange}
                                 />
                             ) : (
-                                <span>{user.email}</span>
+                                <span>{profile.email}</span>
                             )}
                         </label>
                         <label>
@@ -71,11 +99,11 @@ const UserProfile = () => {
                                 <input
                                     type="tel"
                                     name="phone"
-                                    value={user.phone}
+                                    value={profile.phone}
                                     onChange={handleChange}
                                 />
                             ) : (
-                                <span>{user.phone}</span>
+                                <span>{profile.phone}</span>
                             )}
                         </label>
                     </div>
@@ -88,4 +116,4 @@ const UserProfile = () => {
     );
 };
 
-export default UserProfile; 
+export default UserProfile;

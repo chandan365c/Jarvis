@@ -4,14 +4,20 @@ import './signup.css';
 import ParticleEffect from './components/Particle.jsx';
 import password_icon from './assets/lock-stroke-rounded.svg';
 import email_icon from './assets/mail-stroke-rounded.svg';
+import user_icon from './assets/user-stroke-rounded.svg';
+import phone_icon from "./assets/phone-stroke-rounded.svg";
 import axios from 'axios'
+import { useUser } from './UserContext.jsx';
 
 const Signup = () => {
+  const [username, setUsername] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const {setUser} = useUser();
 
 
   const handleSubmit = (e) =>
@@ -24,7 +30,7 @@ const Signup = () => {
     }
     else
     {
-      axios.post('http://localhost:3001/register', {email, password})
+      axios.post('http://localhost:3001/register', {username, phone, email, password})
       .then(result => 
         {
           console.log(result)
@@ -34,6 +40,7 @@ const Signup = () => {
           }
           else
           {
+            setUser({email});
             navigate('/page2');
           }
         }
@@ -49,6 +56,24 @@ const Signup = () => {
         <div className="signup-container">
           <h1>Signup</h1>
           <form onSubmit={handleSubmit}>
+            <input
+              type="UserName"
+              placeholder="Username"
+              pattern='^[a-zA-Z0-9_]{3,20}$'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <img className='signup-person-icon' src={user_icon} alt="user icon" />
+            <input
+              type="number"
+              placeholder="Phone Number"
+              pattern='\d{10}'
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
+            <img className='signup-phone-icon' src={phone_icon} alt="phone icon" />
             <input
               type="email"
               placeholder="Email"
@@ -75,7 +100,7 @@ const Signup = () => {
             />
             <img className='signup-password-icon-2' src={password_icon} alt="password icon" />
 
-            <p>
+            <p className='login-text'>
               Already have an account? <a href="/login">Login here</a>
             </p>
 

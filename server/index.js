@@ -53,6 +53,30 @@ app.post('/register', (req, res) =>
                 }
             }
         )
+        
+    }
+)
+
+app.get('/getUser', (req, res) => 
+    {
+        const {email} = req.query;
+        UserModel.findOne({email: email})
+        .then(user => 
+            {
+                if(user)
+                {
+                    res.json({
+                        username: user.username,
+                        email: user.email,
+                        phone: user.phone
+                    });
+                }
+                else
+                {
+                    res.json("User not found!");
+                }
+            }
+        )
     }
 )
 
