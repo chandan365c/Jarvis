@@ -4,6 +4,7 @@
 - Node.js
 - MongoDB
 - npm or yarn
+- Google gemini API
 
 ## Setup:
 1. Clone the repository
@@ -30,7 +31,8 @@ npm start
 
 - MongoDB Connection String: Ensure MongoDB is installed and setup locally.
 
-- API Key: The project includes an API key for Google Gemini that must be set as an environment variable. This key is required for generating response but will not be shared publicly.
+- API Key: The project includes an API key for Google Gemini that must be set as an environment variable. This key is required for generating response but will not be shared publicly. Navigate to `./src/config/gemini.js` and replace *`"YOUR_API_KEY"`* with your actual API Key.
+**NOTE:** *This project uses Google gemini 1.0 pro.*
 
 
 # Getting Started with Create React App
