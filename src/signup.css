@@ -3,11 +3,11 @@ body {
 }
   
 .signup-main {
-  height: 100vh; /* Take up the full height of the viewport */
-  width: 100vw; /* Take up the full width of the viewport */
-  display: flex; /* Make it a flex container to center its content */
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
+  height: 100vh; 
+  width: 100vw; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
 }
 
 .signup-container-wrapper {

@@ -50,7 +50,7 @@ const ContextProvider = (props) =>
         setRecentPrompt(input)  //The most recent prompt is the currently given input   
         let responseArray = response.split("**");   //split the response according to "**" for bold and store it in a response array
         //FOR BOLD TEXT
-        let newResponseArray="";   //Array to store the new updaetd response
+        let newResponseArray="";   //Array to store the new updated response
         for(let i=0; i<responseArray.length; i++)
         {
             if(i === 0 || i%2 !== 1)    //Whenever the index is an even number

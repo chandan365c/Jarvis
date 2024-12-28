@@ -9,8 +9,9 @@ import { useUser } from './UserContext.jsx';
 const UserProfile = () => {
 
     const { user } = useUser();
+    const [error, setError] = useState('');
 
-    // Sample user data (In a real application, this would come from an API or context)
+    //UserProfile data. (Profile Pic is hardcoded)
     const [profile, setProfile] = useState({
         username: '',
         email: '',
@@ -18,16 +19,16 @@ const UserProfile = () => {
         profilePicture: './profilePic/default-profile-pic.png', // Placeholder image
     });
 
-    // State for editing mode
+    //State for editing mode
     const [isEditing, setIsEditing] = useState(false);
 
-    // Handle input change
+    //Handle input change
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProfile({ ...user, [name]: value });
     };
 
-    // Toggle edit mode
+    //Toggle edit mode
     const toggleEdit = () => {
         setIsEditing(!isEditing);
     };
@@ -53,6 +54,26 @@ const UserProfile = () => {
             });
         }
     }, [user, navigate]);
+
+    const handleSave = () => {
+        axios
+            .put('http://localhost:3001/updateUser', {
+                email: profile.email, 
+                username: profile.username,
+                phone: profile.phone,
+            })
+            .then((response) => {
+                if (response.data) 
+                {
+                    console.log("Profile updated successfully:", response.data);
+                    setProfile(response.data); 
+                    setIsEditing(false);
+                }
+            })
+            .catch((err) => {
+                console.error("Error updating profile:", err);
+            });
+    };
 
     return (
         <div className='profile-main'>
@@ -80,17 +101,12 @@ const UserProfile = () => {
                                 <span>{profile.username}</span>
                             )}
                         </label>
-                        <label>
+                        <label className='email-label'>
                             Email: 
                             {isEditing ? (
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={profile.email}
-                                    onChange={handleChange}
-                                />
+                                <span className='editing-email'>{profile.email}</span>
                             ) : (
-                                <span>{profile.email}</span>
+                                <span className='display-email'>{profile.email}</span>
                             )}
                         </label>
                         <label>
@@ -107,7 +123,8 @@ const UserProfile = () => {
                             )}
                         </label>
                     </div>
-                    <button className='save-edit' onClick={toggleEdit}>
+
+                    <button className='save-edit' onClick={isEditing ? handleSave : toggleEdit}>
                         {isEditing ? 'Save Changes' : 'Edit Profile'}
                     </button>
                 </div>

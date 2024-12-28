@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom';
 const Main = () =>
 {
 
-    const navigate = useNavigate(); // Use navigate to redirect after logout
+    const navigate = useNavigate(); 
     
     const handleLogout = async () => {
         try {
-            navigate('/'); // Redirect to the login page after logout
+            navigate('/'); //Redirect to the login page after logout
         } catch (error) {
-            console.error('Logout error:', error); // Handle error as needed
+            console.error('Logout error:', error);
         }
     };
     

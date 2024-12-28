@@ -1,3 +1,38 @@
+# Running the project
+
+## Prerequisites:
+- Node.js
+- MongoDB
+- npm or yarn
+
+## Setup:
+1. Clone the repository
+```bash
+git clone <repository_url>
+cd <repository_name>
+```
+2. Install dependencies:
+```bash
+npm install
+```
+3. Start the backend server:
+```bash
+cd server
+npm start
+```
+4. Start the react app:
+```bash
+#Run the following in your project directory
+npm start
+```
+
+## Environment Variables
+
+- MongoDB Connection String: Ensure MongoDB is installed and setup locally.
+
+- API Key: The project includes an API key for Google Gemini that must be set as an environment variable. This key is required for generating response but will not be shared publicly.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

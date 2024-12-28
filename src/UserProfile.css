@@ -2,17 +2,17 @@ body
 {
     background-color: #121212; /* Dark background for the whole page */
     color: #ffffff; /* Default white text color for contrast */
-    font-family: 'Arial', sans-serif; /* Font family */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    font-family: 'Arial', sans-serif; 
+    margin: 0; 
+    padding: 0; 
 }
 
 .profile-main {
-    height: 100vh; /* Take up the full height of the viewport */
-    width: 100vw; /* Take up the full width of the viewport */
-    display: flex; /* Make it a flex container to center its content */
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
+    height: 100vh; 
+    width: 100vw; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
 }
   
 .profile-container-wrapper {
@@ -29,14 +29,14 @@ body
 }
 
 .user-profile {
-    max-width: 600px; /* Center the content */
+    max-width: 600px; 
     width: 100%;
-    margin: 40px auto; /* Center with top/bottom margin */
+    margin: 40px auto; 
     padding: 20px;
     backdrop-filter: blur(10px);
     background-size: cover;
     background-color: #1e1e1e; /* Darker gray background for the profile card */
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px; 
     box-shadow: 0 0 40px rgba(31, 111, 234,  0.1);
     border: 1px solid rgb(47, 47, 47);
     transition: all ease 0.4s, box-shadow 0.3s ease-in-out;
@@ -48,23 +48,23 @@ body
 }
 
 .user-profile h1 {
-    text-align: center; /* Center the heading */
-    font-size: 2em; /* Increase font size for heading */
-    margin-bottom: 20px; /* Space below heading */
+    text-align: center; 
+    font-size: 2em; 
+    margin-bottom: 20px; 
 }
 
 .profile-picture {
     display: flex;
-    justify-content: center; /* Center the profile picture */
+    justify-content: center; 
     margin-bottom: 20px;
     
 }
 
 .profile-picture img {
-    border-radius: 50%; /* Circular profile picture */
-    width: 150px; /* Fixed width for profile picture */
-    height: 150px; /* Fixed height for profile picture */
-    border: 3px solid #00bfff; /* Blue border around profile picture */
+    border-radius: 50%; 
+    width: 150px; 
+    height: 150px; 
+    border: 3px solid #00bfff; 
 }
 
 .profile-details {
@@ -76,9 +76,9 @@ body
 
 .profile-details label {
     gap: 10px;
-    display: block; /* Block display for labels */
-    margin-bottom: 10px; /* Space between labels */
-    font-weight: bold; /* Bold labels for emphasis */
+    display: block; 
+    margin-bottom: 10px; 
+    font-weight: bold; 
 }
 
 .profile-details span {
@@ -89,38 +89,38 @@ body
 
 .profile-details input {
     width: calc(100% - 10px); /* Full width minus padding */
-    padding: 10px; /* Increased padding inside input */
-    border-radius: 5px; /* Rounded corners for inputs */
-    border: none; /* No border for inputs */
-    background-color: #333333; /* Dark background for inputs */
-    color: #ffffff; /* White text color inside inputs */
-    transition: background-color 0.3s ease; /* Smooth transition for background color on focus */
+    padding: 10px;
+    border-radius: 5px; 
+    border: none; 
+    background-color: #333333; 
+    color: #ffffff; 
+    transition: background-color 0.3s ease; 
 }
 
 .profile-details input::placeholder {
-    color: #aaaaaa; /* Light gray placeholder text */
+    color: #aaaaaa; 
 }
 
 .profile-details input:hover,
 .profile-details input:focus {
-    background-color: #444444; /* Slightly lighter gray on hover/focus */
+    background-color: #444444; 
 }
 
 .save-edit {
-    width: 100%; /* Full width button */
+    width: 100%; 
     padding: 10px;
-    background-color: #007BFF; /* Bootstrap primary color */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners for button */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 1em; /* Increase font size for button text */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+    background-color: #007BFF; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 1em; 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 .save-edit:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
+    background-color: #0056b3; 
+    transform: scale(1.05); 
 }
 
 .back-button {
@@ -140,4 +140,12 @@ body
 
 .back-button:hover {
     scale: 1.2;
+}
+
+.editing-email {
+    color:#7d7878;
+}
+
+.email-label {
+    padding: 8px;
 }

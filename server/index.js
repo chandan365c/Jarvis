@@ -80,6 +80,30 @@ app.get('/getUser', (req, res) =>
     }
 )
 
+app.put('/updateUser', (req, res) => {
+    const { email, username, phone } = req.body;
+
+    UserModel.findOneAndUpdate(
+        { email }, 
+        { username, phone }, 
+        { new: true } 
+    )
+    .then((updatedUser) => {
+        if (updatedUser) 
+        {
+            res.json(updatedUser); 
+        } 
+        else 
+        {
+            res.status(404).json({ error: "User not found!" });
+        }
+    })
+    .catch((err) => {
+        console.error("Error updating user:", err);
+        res.status(500).json({ error: "Internal server error" });
+    });
+});
+
 app.listen(3001, () =>
     {
         console.log("Server is running on port 3001.")
