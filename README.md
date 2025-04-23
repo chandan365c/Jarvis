@@ -1,12 +1,27 @@
-# Running the project
+#  LLM Chatbot with User Authentication
+This is a web-based chatbot application built with React.js, JavaScript and HTML/CSS. It integrates with powerful Large Language Model (LLM) APIs to provide intelligent, conversational interactions directly in the browser. 
+It features a login system backed by MongoDB to store user credentials.
 
-## Prerequisites:
-- Node.js
-- MongoDB
+*⚠️ This project currently uses a locally hosted MongoDB server, so the server must be running for login functionality to work.*
+
+## Features
+
+- Interactive chatbot UI using LLM APIs.
+- User registration and login system.
+- Passwords are securely stored in MongoDB.
+- Clean and responsive frontend using React and CSS.
+- Modular codebase for easy scalability.
+
+## Running the project
+
+### Prerequisites:
+- Node.js installed
+- MongoDB installed and running locally
 - npm or yarn
-- Google gemini API
+- Internet access for LLM API usage
+- Google gemini API key
 
-## Setup:
+### Setup:
 1. Clone the repository
 ```bash
 git clone <repository_url>
@@ -27,7 +42,7 @@ npm start
 npm start
 ```
 
-## Environment Variables
+### Environment Variables
 
 - MongoDB Connection String: Ensure MongoDB is installed and setup locally. Navigate to `./server/index.js` and replace *`"YOUR_MONGODB_URI"`* with your local mongodb compass connection URI.
 
@@ -36,12 +51,21 @@ npm start
 
 **NOTE:** *This project uses Google gemini 1.0 pro.*
 
+## Future Improvements
+- Deploy MongoDB to the cloud (MongoDB Atlas or similar) for production use.
+- Implement JWT-based authentication.
+- Add support for OAuth or social logins.
+- Enhance chatbot UX with persistent history, file uploads, etc.
 
-# Getting Started with Create React App
+
+
+<br> <br> <br>
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
@@ -52,58 +76,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
