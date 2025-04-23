@@ -1,6 +1,6 @@
-#  LLM Chatbot with User Authentication
-This is a web-based chatbot application built with React.js, JavaScript and HTML/CSS. It integrates with powerful Large Language Model (LLM) APIs to provide intelligent, conversational interactions directly in the browser. 
-It features a login system backed by MongoDB to store user credentials.
+#  LLM Chatbot
+
+A responsive, web-based chatbot app built using React.js, JavaScript, and HTML/CSS, integrated with Google Gemini (LLM 1.0 Pro) for intelligent, real-time conversations. The app features user login functionality using a locally hosted MongoDB database for managing user credentials
 
 *⚠️ This project currently uses a locally hosted MongoDB server, so the server must be running for login functionality to work.*
 
@@ -11,6 +11,14 @@ It features a login system backed by MongoDB to store user credentials.
 - Passwords are securely stored in MongoDB.
 - Clean and responsive frontend using React and CSS.
 - Modular codebase for easy scalability.
+
+## Tech Stack
+
+- **Frontend:** React.js, JavaScript, HTML, CSS
+- **Backend:** Node.js, Express
+- **Database:** MongoDB (Local instance)
+- **API Integration:** Google Gemini 1.0 Pro
+
 
 ## Running the project
 
@@ -44,9 +52,15 @@ npm start
 
 ### Environment Variables
 
-- MongoDB Connection String: Ensure MongoDB is installed and setup locally. Navigate to `./server/index.js` and replace *`"YOUR_MONGODB_URI"`* with your local mongodb compass connection URI.
+Create a `.env` file in the root of your project and add:
+```
+REACT_APP_GEMINI_API_KEY = your-google-gemini-api-key 
+MONGODB_URI = mongodb://localhost:27017/your-db-name
+```
 
-- API Key: The project includes an API key for Google Gemini that must be set as an environment variable. This key is required for generating response but will not be shared publicly. Navigate to `./src/config/gemini.js` and replace *`"YOUR_API_KEY"`* with your actual API Key.
+- MongoDB Connection String: Ensure MongoDB is installed and setup locally. Navigate to `./server/index.js` and replace *`"YOUR_MONGODB_URI"`* with *`process.env.MONGODB_URI`*.
+
+- API Key: The project includes an API key for Google Gemini that must be set as an environment variable. This key is required for generating response but will not be shared publicly. Navigate to `./src/config/gemini.js` and replace *`"YOUR_API_KEY"`* with *`process.env.REACT_APP_GEMINI_API_KEY`*.
 
 
 **NOTE:** *This project uses Google gemini 1.0 pro.*
